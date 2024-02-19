@@ -1,134 +1,76 @@
-/* eslint-disable */
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
-// chakra imports
-import { Box, Flex, HStack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Text, VStack, Container } from "@chakra-ui/react";
 
-export function SidebarLinks(props) {
-  //   Chakra color mode
-  let location = useLocation();
-  let activeColor = useColorModeValue("gray.700", "white");
-  let inactiveColor = useColorModeValue(
-    "secondaryGray.600",
-    "secondaryGray.600"
-  );
-  let activeIcon = useColorModeValue("brand.500", "white");
-  let textColor = useColorModeValue("secondaryGray.500", "white");
-  let brandColor = useColorModeValue("brand.500", "brand.400");
+// Dummy data simulating timestamps paired with strings
+const transcriptData = [
+  {
+    time: "0:23",
+    speaker: "John",
+    text: "It's great to see you both. I've had a super productive week and I'm super excited for the long weekend. I'll be heading out to go camping with my family for a couple of days, and we're planning to fo kayaking. What are you planning to do?",
+  },
+  {
+    time: "2:58",
+    speaker: "Sarah",
+    text: "Nothing quite as exciting as you (laugh). I don’t really have anything planned. I’ve been so busy that I’m taking this weekend to rest.",
+  },
+  {
+    time: "3:41",
+    speaker: "",
+    text: "I am excited to get some time to myself though! It’s been a while since I’ve had a calm weekend in.",
+  },
+  {
+    time: "4:14",
+    speaker: "John",
+    text: "I’m sure that’s needed. How have things been going on the work side of things? I know we have a few important deadlines coming up soon with major clients so i’d like to check in on progress.",
+  },
+  {
+    time: "5:56",
+    speaker: "Jane",
+    text: "Unfortunately I’ve run into more bugs than I’ve imagined and I think I’m going to need to push my deadline out by two weeks.",
+  },
+  {
+    time: "6:20",
+    speaker: "",
+    text: "This may mean we won’t be able to have my features to the clients before the holidays, but we can realistically have it ready by the new year. Do you think that...",
+  },
+];
 
-  const { routes } = props;
-
-  // verifies if routeName is the one active (in browser input)
-  const activeRoute = (routeName) => {
-    return location.pathname.includes(routeName);
-  };
-
-  // this function creates the links from the secondary accordions (for example auth -> sign-in -> default)
-  const createLinks = (routes) => {
-    return routes.map((route, index) => {
-      if (route.category) {
-        return (
-          <>
-            <Text
-              fontSize={"md"}
-              color={activeColor}
-              fontWeight='bold'
-              mx='auto'
-              ps={{
-                sm: "10px",
-                xl: "16px",
-              }}
-              pt='18px'
-              pb='12px'
-              key={index}>
-              {route.name}
+export default function TranscriptComponent() {
+  return (
+    <Container maxW="container.md" p={4}>
+      <VStack
+        spacing={4}
+        align="stretch"
+        maxHeight="500px" // Example max height
+        overflowY="scroll" // Add scroll on Y axis if content overflows
+        sx={{
+          "&::-webkit-scrollbar": {
+            width: "16px",
+            borderRadius: "8px",
+            backgroundColor: `rgba(0, 0, 0, 0.05)`,
+          },
+          "&::-webkit-scrollbar-thumb": {
+            backgroundColor: `rgba(0, 0, 0, 0.5)`,
+            borderRadius: "8px",
+          },
+        }}
+      >
+        {transcriptData.map((entry, index) => (
+          <Box
+            key={index}
+            bg="linear-gradient(135deg, #868CFF 0%, #4318FF 100%)"
+            p={4}
+            borderRadius="lg"
+          >
+            <Text fontSize="sm" color="white" fontWeight="bold">
+              {entry.time} [{entry.speaker}]
             </Text>
-            {createLinks(route.items)}
-          </>
-        );
-      } else if (
-        route.layout === "/admin" ||
-        route.layout === "/auth" ||
-        route.layout === "/rtl"
-      ) {
-        return (
-          <NavLink key={index} to={route.layout + route.path}>
-            {route.icon ? (
-              <Box>
-                <HStack
-                  spacing={
-                    activeRoute(route.path.toLowerCase()) ? "22px" : "26px"
-                  }
-                  py='5px'
-                  ps='10px'>
-                  <Flex w='100%' alignItems='center' justifyContent='center'>
-                    <Box
-                      color={
-                        activeRoute(route.path.toLowerCase())
-                          ? activeIcon
-                          : textColor
-                      }
-                      me='18px'>
-                      {route.icon}
-                    </Box>
-                    <Text
-                      me='auto'
-                      color={
-                        activeRoute(route.path.toLowerCase())
-                          ? activeColor
-                          : textColor
-                      }
-                      fontWeight={
-                        activeRoute(route.path.toLowerCase())
-                          ? "bold"
-                          : "normal"
-                      }>
-                      {route.name}
-                    </Text>
-                  </Flex>
-                  <Box
-                    h='36px'
-                    w='4px'
-                    bg={
-                      activeRoute(route.path.toLowerCase())
-                        ? brandColor
-                        : "transparent"
-                    }
-                    borderRadius='5px'
-                  />
-                </HStack>
-              </Box>
-            ) : (
-              <Box>
-                <HStack
-                  spacing={
-                    activeRoute(route.path.toLowerCase()) ? "22px" : "26px"
-                  }
-                  py='5px'
-                  ps='10px'>
-                  <Text
-                    me='auto'
-                    color={
-                      activeRoute(route.path.toLowerCase())
-                        ? activeColor
-                        : inactiveColor
-                    }
-                    fontWeight={
-                      activeRoute(route.path.toLowerCase()) ? "bold" : "normal"
-                    }>
-                    {route.name}
-                  </Text>
-                  <Box h='36px' w='4px' bg='brand.400' borderRadius='5px' />
-                </HStack>
-              </Box>
-            )}
-          </NavLink>
-        );
-      }
-    });
-  };
-  //  BRAND
-  return createLinks(routes);
+            <Text fontSize="md" color="white" fontWeight="regular" mt={2}>
+              {entry.text}
+            </Text>
+          </Box>
+        ))}
+      </VStack>
+    </Container>
+  );
 }
-
-export default SidebarLinks;
