@@ -57,6 +57,13 @@ import {
 } from "views/admin/default/variables/columnsData";
 import tableDataCheck from "views/admin/default/variables/tableDataCheck.json";
 import tableDataComplex from "views/admin/default/variables/tableDataComplex.json";
+import { Image } from "@chakra-ui/react"
+import happyEmote from "assets/img/layout/happyEmote.png"
+import nervousEmote from "assets/img/layout/nervousEmote.png"
+import surprisedEmote from "assets/img/layout/surprisedEmote.png"
+import sadEmote from "assets/img/layout/sadEmote.png"
+import neutralEmote from "assets/img/layout/neutralEmote.png"
+import angryEmote from "assets/img/layout/angryEmote.png"
 
 export default function UserReports() {
   // Chakra Color Mode
@@ -64,85 +71,101 @@ export default function UserReports() {
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
+      
       <SimpleGrid
         columns={{ base: 1, md: 2, lg: 3, "2xl": 6 }}
         gap='20px'
         mb='20px'>
+        
         <MiniStatistics
           startContent={
             <IconBox
-              w='56px'
+              w='70px'
               h='56px'
-              bg={boxBg}
+              bg='orange'
               icon={
-                <Icon w='32px' h='32px' as={MdBarChart} color={brandColor} />
+                <Image src={happyEmote} w="40px" h="40px" />
               }
             />
           }
-          name='Earnings'
-          value='$350.4'
+          name='Happy'
+          nameFontSize="3xl"
+          nameColor="orange"
         />
         <MiniStatistics
           startContent={
             <IconBox
-              w='56px'
+              w='70px'
               h='56px'
-              bg={boxBg}
+              bg='purple'
               icon={
-                <Icon w='32px' h='32px' as={MdAttachMoney} color={brandColor} />
+                <Image src={nervousEmote} w="40px" h="40px" />
               }
             />
           }
-          name='Spend this month'
-          value='$642.39'
-        />
-        <MiniStatistics growth='+23%' name='Sales' value='$574.34' />
-        <MiniStatistics
-          endContent={
-            <Flex me='-16px' mt='10px'>
-              <FormLabel htmlFor='balance'>
-                <Avatar src={Usa} />
-              </FormLabel>
-              <Select
-                id='balance'
-                variant='mini'
-                mt='5px'
-                me='0px'
-                defaultValue='usd'>
-                <option value='usd'>USD</option>
-                <option value='eur'>EUR</option>
-                <option value='gba'>GBA</option>
-              </Select>
-            </Flex>
-          }
-          name='Your balance'
-          value='$1,000'
+          name='Nervous'
+          nameFontSize="3xl"
+          nameColor="purple"
         />
         <MiniStatistics
           startContent={
             <IconBox
-              w='56px'
+              w='70px'
               h='56px'
-              bg='linear-gradient(90deg, #4481EB 0%, #04BEFE 100%)'
-              icon={<Icon w='28px' h='28px' as={MdAddTask} color='white' />}
-            />
-          }
-          name='New Tasks'
-          value='154'
-        />
-        <MiniStatistics
-          startContent={
-            <IconBox
-              w='56px'
-              h='56px'
-              bg={boxBg}
+              bg='pink'
               icon={
-                <Icon w='32px' h='32px' as={MdFileCopy} color={brandColor} />
+                <Image src={surprisedEmote} w="40px" h="40px" />
               }
             />
           }
-          name='Total Projects'
-          value='2935'
+          name='Surprised'
+          nameFontSize="3xl"
+          nameColor="pink"
+        />
+        <MiniStatistics
+          startContent={
+            <IconBox
+              w='70px'
+              h='56px'
+              bg='blue'
+              icon={
+                <Image src={sadEmote} w="40px" h="40px" />
+              }
+            />
+          }
+          name='Sad'
+          nameFontSize="3xl"
+          nameColor="blue"
+        />
+        <MiniStatistics
+          startContent={
+            <IconBox
+              w='70px'
+              h='56px'
+              bg='gray'
+              icon={
+                <Image src={neutralEmote} w="40px" h="40px" />
+              }
+            />
+          }
+          name='Neutral'
+          nameFontSize="3xl"
+          nameColor="gray"
+        />
+        <MiniStatistics
+          startContent={
+            <IconBox
+              w='70px'
+              h='56px'
+              bg='red'
+              icon={
+                <Image src={angryEmote} w="40px" h="40px" />
+              }
+            />
+          }
+          name='Angry'
+          nameFontSize="3xl"
+          nameColor="red"
         />
       </SimpleGrid>
 
