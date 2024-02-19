@@ -25,7 +25,7 @@ class PieChart extends React.Component {
         plotOptions: {
           pie: {
             donut: {
-              size: "70%", // Adjust the size of the donut
+              size: "45%", // Adjust the size of the donut
             },
           },
         },
