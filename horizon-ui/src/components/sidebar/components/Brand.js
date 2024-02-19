@@ -2,7 +2,7 @@ import React from "react";
 
 // Chakra imports
 import { Flex, useColorModeValue, Image } from "@chakra-ui/react";
-import valenceVibrationsLogo from "assets/img/layout/logoWhite.png";
+import valenceVibrationsLogo from "assets/img/layout/valenceVibrationsLogo.png";
 
 // Custom components
 import { HorizonLogo } from "components/icons/Icons";
