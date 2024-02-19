@@ -38,10 +38,13 @@ const transcriptData = [
 export default function TranscriptComponent() {
   return (
     <Container maxW="container.md" p={4}>
+      <Text fontSize="2xl" fontWeight="bold" mb={4}>
+        Transcript
+      </Text>
       <VStack
         spacing={4}
         align="stretch"
-        maxHeight="500px" // Example max height
+        maxHeight="600px" // Example max height
         overflowY="scroll" // Add scroll on Y axis if content overflows
         sx={{
           "&::-webkit-scrollbar": {
@@ -56,12 +59,7 @@ export default function TranscriptComponent() {
         }}
       >
         {transcriptData.map((entry, index) => (
-          <Box
-            key={index}
-            bg="linear-gradient(135deg, #868CFF 0%, #4318FF 100%)"
-            p={4}
-            borderRadius="lg"
-          >
+          <Box key={index} bg="rgba(128, 0, 220, 0.5)" p={4} borderRadius="lg">
             <Text fontSize="sm" color="white" fontWeight="bold">
               {entry.time} [{entry.speaker}]
             </Text>
