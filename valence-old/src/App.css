@@ -1,0 +1,106 @@
+.App {
+  font-family: "Arial", sans-serif;
+  color: #fff;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #6d5b97 0%, #ada3d8 100%);
+}
+
+.App-header {
+  text-align: center;
+  padding: 20px;
+}
+
+.main-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #e0d7ee;
+}
+
+.start-button {
+  background-color: #7e57c2;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.start-button:hover {
+  background-color: #9575cd;
+}
+
+.feature-section {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 3rem;
+}
+
+.feature-container {
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.feature-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  background-color: #9c27b0;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 30%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  min-width: 250px; /* Minimum width for small devices */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 1rem;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 3rem;
+  }
+
+  .feature-title {
+    font-size: 2rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
