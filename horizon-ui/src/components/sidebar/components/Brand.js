@@ -1,7 +1,8 @@
 import React from "react";
 
 // Chakra imports
-import { Flex, useColorModeValue } from "@chakra-ui/react";
+import { Flex, useColorModeValue, Image } from "@chakra-ui/react";
+import valenceVibrationsLogo from "assets/img/layout/valenceVibrationsLogo.png";
 
 // Custom components
 import { HorizonLogo } from "components/icons/Icons";
@@ -12,9 +13,9 @@ export function SidebarBrand() {
   let logoColor = useColorModeValue("navy.700", "white");
 
   return (
-    <Flex align='center' direction='column'>
-      <HorizonLogo h='26px' w='175px' my='32px' color={logoColor} />
-      <HSeparator mb='20px' />
+    <Flex align="center" direction="column">
+      <Image src={valenceVibrationsLogo} w="175px" h="50px" />
+      <HSeparator mb="40px" />
     </Flex>
   );
 }
