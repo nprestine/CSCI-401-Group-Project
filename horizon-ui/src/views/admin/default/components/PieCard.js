@@ -3,6 +3,7 @@ import { Box, Flex, Text, Select, useColorModeValue } from "@chakra-ui/react";
 // Custom components
 import Card from "components/card/Card.js";
 import PieChart from "components/charts/PieChart";
+import BarChart from "components/charts/BarChart";
 import React from "react";
 
 export default function Conversion(props) {
@@ -24,18 +25,45 @@ export default function Conversion(props) {
     labels: ["Neutral", "Happy", "Nervous", "Surprised", "Sad"], // Labels for each emotion
   };
 
+  const barChartData = [{
+    data: [45, 30, 7, 18]
+  }];
+  const barChartOptions = {
+    chart: {
+      type: 'bar',
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      }
+    },
+    xaxis: {
+      categories: ['Neutral', 'Happy', 'Nervous', 'Surprised'],
+    },
+  };
+
   return (
     <Card p='40px' align='flex-start' direction='column' w='100%' {...rest}>
       <Flex direction='column' w='100%'>
         <Text color={textColor} fontSize='md' fontWeight='600' mt='4px'>
           Breakdown
         </Text>
-        <PieChart
-          h='100'
-          w='200'
-          chartData={pieChartData}
-          chartOptions={pieChartOptions}
-        />
+        <Flex direction='row'>
+          <Box h='240px' w='50%' mt='auto'>
+            <BarChart 
+              chartData = {barChartData}
+              chartOptions = {barChartOptions}
+            />
+          </Box>
+          <Box h='240px' w='50%' mt='auto'>
+            <PieChart
+              h='100'
+              w='200'
+              chartData={pieChartData}
+              chartOptions={pieChartOptions}
+            />
+          </Box>
+        </Flex>
       </Flex>
     </Card>
   );
